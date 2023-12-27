@@ -3,11 +3,8 @@ import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { updateImages, fetchAllImages } from "./features/imageSlice";
 import axios from "axios";
 import Title from "./components/Title";
-import Div from "./components/Div";
-import NavContainer from "./components/NavContainer";
-import TitlePopular from "./components/TitlePopular";
 import ImageList from "./components/ImageList";
-import PopularsList from "./components/PopularsList";
+import PopularsList from "./components/NavContainer";
 import Search from "./components/Search";
 
 function App() {
@@ -56,25 +53,22 @@ function App() {
   const fetchAllPopulars = async () => {
     await dispatch(fetchAllImages());
   };
+
   useEffect(() => {
     activePopular === "Festivals" && filterImages(activePopular);
   }, [images]);
+
   useEffect(() => {
     fetchAllPopulars();
   }, []);
 
   return (
     <div className="App">
-      <Title>Picture Gallery</Title>
+      <Title $largeFont>Picture Gallery</Title>
       <Search handleSearch={handleSearch} />
-      <NavContainer>
-        <TitlePopular> Popular </TitlePopular>
-        <PopularsList populars={populars} onSearch={filterImages} />
-      </NavContainer>
-      <Title>{activePopular}</Title>
-      <Div>
-        <ImageList imagesListData={imagesListData} />
-      </Div>
+      <PopularsList populars={populars} onSearch={filterImages} />
+      <Title $largeFont>{activePopular}</Title>
+      <ImageList imagesListData={imagesListData} />
     </div>
   );
 }

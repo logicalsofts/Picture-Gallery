@@ -56,25 +56,31 @@ const imagesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAllImages.pending, (state) => {
-      state.loading = true;
-      state.images = [];
-      state.error = "";
-      state.populars = state.populars;
+      return state = Object.assign({
+        ...state,
+        loading: true,
+        images: [],
+        error: "",
+      });
     });
     builder.addCase(
       fetchAllImages.fulfilled,
       (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.images = action.payload;
-        state.error = "";
-        state.populars = state.populars;
+        return state = Object.assign({
+          ...state,
+          loading: false,
+          images: action.payload,
+          error: "",
+        });
       }
     );
     builder.addCase(fetchAllImages.rejected, (state) => {
-      state.loading = false;
-      state.images = [];
-      state.error = "Something went wrong";
-      state.populars = state.populars;
+      return state = Object.assign({
+        ...state,
+        loading: false,
+        images: [],
+        error: "Something went wrong",
+      });
     });
   },
 });

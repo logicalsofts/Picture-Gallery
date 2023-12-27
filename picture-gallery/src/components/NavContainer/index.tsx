@@ -1,5 +1,7 @@
 import React, { FC } from "react";
-import Button from "./Button";
+import Button from "../Button";
+import Title from "../Title";
+import { NavContainer } from "./styled";
 
 interface PopularsListProps {
   populars: string[];
@@ -9,6 +11,8 @@ interface PopularsListProps {
 const PopularsList: FC<PopularsListProps> = (props) => {
   return (
     <React.Fragment>
+      <NavContainer>
+      <Title> Popular </Title>
       {props.populars &&
         props.populars.map((popular: string) => {
           return (
@@ -17,6 +21,7 @@ const PopularsList: FC<PopularsListProps> = (props) => {
             </Button>
           );
         })}
+        </NavContainer>
     </React.Fragment>
   );
 };
