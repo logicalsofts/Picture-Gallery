@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { updateImages, fetchAllImages } from "./features/imageSlice";
-import axios from "axios";
+import axios from 'axios';
 import Title from "./components/Title";
 import ImageList from "./components/ImageList";
 import PopularsList from "./components/NavContainer";
@@ -12,7 +12,6 @@ function App() {
   const [activePopular, setActivePopular] = useState("Festivals");
   const images = useAppSelector((state) => state.images.images);
   const populars = useAppSelector((state) => state.images.populars);
-  const loading = useAppSelector((state) => state.images.loading);
 
   const dispatch = useAppDispatch();
 
@@ -35,7 +34,7 @@ function App() {
       .get(
         `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${`a4954b7f1ad4d0064cdc3f259849c390`}&text=${query}&per_page=24&page=1&format=json&nojsoncallback=true`
       )
-      .then((response) => {
+      .then((response:any) => {
         return response.data.photos.photo;
       });
   };

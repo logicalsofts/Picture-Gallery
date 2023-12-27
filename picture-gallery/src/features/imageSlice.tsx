@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from 'axios';
 import { State } from "./types";
 
 const initialState: State = {

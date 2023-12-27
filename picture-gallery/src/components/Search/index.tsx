@@ -1,4 +1,4 @@
-import { FC, useRef, InputHTMLAttributes } from "react";
+import { FC, useRef } from "react";
 import Button from "../Button";
 import { InputContainer, Input } from './styled'
 
